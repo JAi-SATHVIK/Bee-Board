@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 const SocketContext = createContext(null);
@@ -10,7 +10,8 @@ export function useSocket() {
 export function SocketProvider({ children }) {
   const [socket, setSocket] = useState(null);
 
-const s = io('https://bee-board.onrender.com', { withCredentials: true });
+  useEffect(() => {
+    const s = io('https://bee-board.onrender.com', { withCredentials: true });
     setSocket(s);
     window.socket = s; // For debugging
     return () => {
@@ -24,4 +25,4 @@ const s = io('https://bee-board.onrender.com', { withCredentials: true });
       {children}
     </SocketContext.Provider>
   );
-} 
+}
