@@ -11,7 +11,7 @@ export function SocketProvider({ children }) {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const s = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000', {
+    const s = io('https://bee-board.onrender.com', {
       withCredentials: true
     });
     setSocket(s);
