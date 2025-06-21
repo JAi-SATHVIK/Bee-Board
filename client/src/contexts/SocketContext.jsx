@@ -10,10 +10,7 @@ export function useSocket() {
 export function SocketProvider({ children }) {
   const [socket, setSocket] = useState(null);
 
-  useEffect(() => {
-    const s = io('https://bee-board.onrender.com', {
-      withCredentials: true
-    });
+const s = io('https://bee-board.onrender.com', { withCredentials: true });
     setSocket(s);
     window.socket = s; // For debugging
     return () => {
